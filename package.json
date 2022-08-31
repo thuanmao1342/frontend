@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://thuanmao1342.github.io/frontend",
+  "homepage": "https://thuanmao1342.github.io",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",

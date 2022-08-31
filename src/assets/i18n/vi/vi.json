@@ -108,5 +108,6 @@
         "male": "Nam",
         "female": "Nữ",
         "other": "Khác"
-    }
+    },
+    "forgot_password": "Quên mật khẩu?"
 }

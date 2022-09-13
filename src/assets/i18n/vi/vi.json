@@ -108,5 +108,10 @@
         "male": "Nam",
         "female": "Nữ",
         "other": "Khác"
+    },
+    "ERROR":{
+        "NOT_FOUND_USER": "Tài khoản không tồn tại hoặc sai mật khẩu!",
+        "USER_IS_LOOK": "Tài khoản đã bị khóa, vui lòng liên hệ quản trị viên để được giúp đỡ (exemple@gmail.com)!",
+        "WRONG_PASSWORD": "Nhập sai mật khẩu"
     }
 }

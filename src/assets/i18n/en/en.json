@@ -108,5 +108,10 @@
         "male": "Male",
         "female": "Female",
         "other": "Other"
+    },
+    "ERROR":{
+        "NOT_FOUND_USER": "Not found user!",
+        "USER_IS_LOOK": "User is lock!",
+        "WRONG_PASSWORD": "Wrong password"
     }
 }

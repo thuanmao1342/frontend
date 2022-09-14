@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { Button, Checkbox, Stack, TextField, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
+import authService from "../../../services/auth/authService";
 
 const schema = yup
   .object({
@@ -30,6 +31,9 @@ export default function Login() {
 
   const [language, setLanguage] = React.useState(lgn);
 
+  const [error, setError] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+
   const {
     register,
     handleSubmit,
@@ -39,8 +43,26 @@ export default function Login() {
   });
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    localStorage.setItem("CURRENT_USER", "Bearer " + data.username);
-    navigate("/");
+    authService.login(data).then((res) => {
+      console.log(res);
+      if (res.status === "success") {
+        localStorage.setItem("CURRENT_USER", "Bearer " + res.accessToken);
+        navigate("/dashboard", { replace: true });
+      } else {
+        setError(true);
+        let message = "";
+        if (res.loginFailCount) {
+          message =
+            t(`common:ERROR.${res.message}`) +
+            " " +
+            res.loginFailCount +
+            " times";
+        } else {
+          message = t(`common:ERROR.${res.message}`);
+        }
+        setMessage(message);
+      }
+    });
   };
 
   const handleChangeLanguage = (event) => {
@@ -48,7 +70,7 @@ export default function Login() {
     i18n.changeLanguage(event.target.value);
     localStorage.setItem("LANGUAGE", event.target.value);
     document.title = t("common:app_name");
-  }
+  };
 
   return (
     <Box>
@@ -84,6 +106,7 @@ export default function Login() {
                   required
                 />
               </Stack>
+              {error && <span className="error-message">{message}</span>}
               <div className={styles.footer_form}>
                 <div className={styles.link}>
                   <div>

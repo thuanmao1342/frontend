@@ -34,7 +34,7 @@ function CustomRouter() {
             }
           />
           <Route
-            path="inbox"
+            path="dashboard"
             element={
               <Suspense fallback={<BackDrop />}>
                 <PrivateRoute>
